@@ -123,3 +123,54 @@ WHERE rn > 10 AND rn <= 20;
 FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY
 */
 
+SELECT
+     FIRST_NAME, SALARY
+FROM employees;
+
+SELECT
+	e.FIRST_NAME, e.SALARY, tbl.AVG_SALARY
+FROM employees e
+JOIN (SELECT
+	DEPARTMENT_ID,
+	TRUNC(AVG(SALARY), 0) as AVG_SALARY
+FROM employees 
+GROUP BY department_id) tbl
+on e.department_id = tbl.department_id;
+
+-- 부서별 최고 급여를 받는 직원을 조회해 주세요,.
+-- 사원 이름 , 급여, 부서이름
+
+/* SELECT
+	e.FIRST_NAME, e.SALARY, tbl.DEPARTMENT_NAME
+from employees e
+join (
+SELECT
+	e.DEPARTMENT_ID,
+	d.DEPARTMENT_NAME,
+	MAX(SALARY) AS MAX_SALARY
+FROM employees e
+join departments d
+on e.department_id = d.department_id
+GROUP BY e.department_id, DEPARTMENT_NAME
+) tbl
+on e.department_id = tbl.department_id
+where salary = tbl.max_salary
+ORDER BY salary DESC; */
+
+
+SELECT
+	e.FIRST_NAME, e.SALARY, d.DEPARTMENT_NAME
+from employees e
+join
+(
+SELECT
+	DEPARTMENT_ID,
+	Max(SALARY) AS MAX_SALARY
+from employees
+GROUP BY department_id
+) max_sal
+ON e.department_id = max_sal.department_id
+AND e.salary = max_sal.max_salary
+join departments d
+on e.department_id = d.department_id
+ORDER BY salary DESC;
