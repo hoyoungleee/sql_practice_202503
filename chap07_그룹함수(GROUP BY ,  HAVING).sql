@@ -68,15 +68,27 @@ ORDER BY 평균급여 desc;
 1-1. 사원 테이블에서 JOB_ID별 사원 수를 구하세요.
 1-2. 사원 테이블에서 JOB_ID별 월급의 평균을 구하세요. 월급의 평균 순으로 내림차순 정렬하세요.
 */
-
+SELECT
+	count(employee_id),
+	AVG(salary) AS 월급평균,
+	JOB_ID
+from employees
+group by job_id
+ORDER by 월급평균 DESC;
 
 /*
 문제 2.
 사원 테이블에서 입사 년도 별 사원 수를 구하세요.
 (TO_CHAR() 함수를 사용해서 연도만 변환합니다. 그리고 그것을 그룹화 합니다.)
 */
-
-
+SELECT
+	HIRE_YEAR,
+	COUNT(EMPLOYEE_ID)
+from(
+SELECT
+	TO_CHAR(HIRE_DATE,'yyyy') AS HIRE_YEAR, employees.EMPLOYEE_ID
+from employees
+) group by HIRE_YEAR;
 
 /*
 문제 3.
@@ -84,6 +96,13 @@ ORDER BY 평균급여 desc;
 단 부서 평균 급여가 7000이상인 부서만 출력하세요.
 */
 
+SELECT
+	DEPARTMENT_ID,
+	TRUNC(avg(SALARY)) AS 부서별평균급여
+from employees
+WHERE SALARY >= 5000
+GROUP by DEPARTMENT_ID
+HAVING avg(SALARY) > 7000;
 
 
 
@@ -95,3 +114,12 @@ department_id(부서별) salary(월급)의 평균, 합계, count를 구합니다
 조건 2) 평균은 소수 2째 자리에서 절사 하세요.
 */
 
+SELECT
+	DEPARTMENT_ID,
+	trunc(AVG(SALARY + (SALARY* COMMISSION_PCT)), 2),
+	trunc(SUM(SALARY + (SALARY* COMMISSION_PCT)), 2),
+	COUNT(EMPLOYEE_ID)
+FROM employees
+where commission_pct is not null
+group by department_id
+;
