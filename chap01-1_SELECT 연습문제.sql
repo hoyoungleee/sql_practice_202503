@@ -73,6 +73,7 @@ SELECT
     FIRST_NAME, JOB_ID
 from employees
 WHERE JOB_ID = 'IT_PROG' OR JOB_ID = 'SA_MAN'
+--WHERE JOB_ID IN('IT_PROG', 'SA_MAN') 다항 연산자도 사용가능
 order by SALARY DESC;
 
 --13. Steven King 사원의 정보를 “Steven King 사원의 급여는 24000달러 입니다” 형식으로 출력하세요.
@@ -87,7 +88,7 @@ WHERE FIRST_NAME = 'Steven' AND LAST_NAME = 'King';
 SELECT
     FIRST_NAME, JOB_ID
 from employees
-where job_id LIKE '%MAN%';
+where job_id LIKE '%MAN';
 
 
 --15. 매니저(MAN) 직무에 해당하는 사원의 이름과 직무아이디를 직무아이디 순서대로 출력하세요.

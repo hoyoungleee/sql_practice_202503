@@ -82,13 +82,11 @@ ORDER by 월급평균 DESC;
 (TO_CHAR() 함수를 사용해서 연도만 변환합니다. 그리고 그것을 그룹화 합니다.)
 */
 SELECT
-	HIRE_YEAR,
-	COUNT(EMPLOYEE_ID)
-from(
-SELECT
-	TO_CHAR(HIRE_DATE,'yyyy') AS HIRE_YEAR, employees.EMPLOYEE_ID
-from employees
-) group by HIRE_YEAR;
+	TO_CHAR(HIRE_DATE, 'yy') AS 입사연도,
+	COUNT(EMPLOYEE_ID) AS 사원수
+from EMPLOYEES
+GROUP BY TO_CHAR(HIRE_DATE, 'yy')
+Order by 입사연도;
 
 /*
 문제 3.

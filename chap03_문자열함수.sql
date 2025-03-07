@@ -94,7 +94,7 @@ EMPLOYEES 테이블에서 phone_number컬럼은 ###.###.####형태로 저장되�
 전화 번호를 출력하도록 쿼리를 작성하세요. (CONCAT, SUBSTR 사용)
 */
 SELECT
-    CONCAT('02',substr('043.444.2222',4)) AS 전화번호 -- 전화 번호 문자열 대체하면 됌.
+    CONCAT('(02)',substr(phone_number,4)) AS 전화번호 -- 전화 번호 문자열 대체하면 됌.
 from EMPLOYEES;
 
 /*
@@ -111,7 +111,7 @@ EMPLOYEES 테이블에서 JOB_ID가 it_prog인 사원의 이름(first_name)과 �
 SELECT
     RPAD(substr(FIRST_NAME,1,3), length(FIRST_NAME), '*') as name, LPAD(SALARY, 10, '*') as SALARY
 from employees
-where lower(job_id) = lower('IT_PROG');
+where lower(job_id) = 'it_prog';
 
 
 
