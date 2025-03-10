@@ -7,6 +7,12 @@
         <mxCell id="seBxweN8TRxUuG7xHNLX-2" value="&amp;nbsp;회원" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
           <mxGeometry x="370" y="50" width="80" height="80" as="geometry" />
         </mxCell>
+        <mxCell id="seBxweN8TRxUuG7xHNLX-3" value="게시글" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="690" y="310" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="seBxweN8TRxUuG7xHNLX-4" value="댓글" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="110" y="300" width="80" height="80" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
